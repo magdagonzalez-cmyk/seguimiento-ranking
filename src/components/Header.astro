@@ -1,0 +1,74 @@
+<header class="encabezado">
+    <div class="contenedor encabezado-interior">
+        <a href="/" class="logo">
+            <span class="logo-icono">&lt;/&gt;</span>
+            <span>Ranking TP</span>
+        </a>
+
+        <nav aria-label="Navegación principal">
+            <a href="/">Inicio</a>
+            <a href="/ranking">Ranking</a>
+            <a href="/talleres">Programación</a>
+            <a href="/nosotros">Nosotros</a>
+        </nav>
+    </div>
+</header>
+
+<style>
+    .encabezado {
+        background: #101b35;
+        color: white;
+        padding: 18px 24px;
+    }
+
+    .encabezado-interior {
+        max-width: 1100px;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: white;
+        text-decoration: none;
+        font-size: 1.3rem;
+        font-weight: bold;
+    }
+
+    .logo-icono {
+        color: #63e6be;
+        font-family: monospace;
+    }
+
+    nav {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    nav a {
+        color: white;
+        text-decoration: none;
+    }
+
+    nav a:hover {
+        color: #63e6be;
+    }
+
+    @media (max-width: 600px) {
+        .encabezado-interior {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        nav {
+            gap: 12px;
+        }
+    }
+</style>

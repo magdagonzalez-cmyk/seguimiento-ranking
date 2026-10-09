@@ -1,0 +1,89 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const estudiantes = [
+    {
+        puesto: 1,
+        nombre: "Estudiante Ejemplo 1",
+        curso: "3.º medio TP",
+        puntos: 950,
+    },
+    {
+        puesto: 2,
+        nombre: "Estudiante Ejemplo 2",
+        curso: "4.º medio TP",
+        puntos: 920,
+    },
+    {
+        puesto: 3,
+        nombre: "Estudiante Ejemplo 3",
+        curso: "3.º medio TP",
+        puntos: 880,
+    },
+    {
+        puesto: 4,
+        nombre: "Estudiante Ejemplo 4",
+        curso: "4.º medio TP",
+        puntos: 860,
+    },
+    {
+        puesto: 5,
+        nombre: "Estudiante Ejemplo 5",
+        curso: "3.º medio TP",
+        puntos: 810,
+    },
+    {
+        puesto: 6,
+        nombre: "Estudiante Ejemplo 6",
+        curso: "4.º medio TP",
+        puntos: 790,
+    },
+];
+---
+
+<Layout title="Ranking | Ranking TP">
+    <section class="seccion">
+        <div class="contenedor">
+            <h1 class="titulo-seccion">Ranking de Programación</h1>
+            <p class="texto-suave">
+                Periodo demostrativo. Los puntajes son ficticios.
+            </p>
+
+            <div class="panel">
+                <h2>Resultados por curso</h2>
+
+                <div class="tabla-contenedor">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Puesto</th>
+                                <th>Estudiante</th>
+                                <th>Curso</th>
+                                <th>Puntaje</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                estudiantes.map((estudiante) => (
+                                    <tr>
+                                        <td>{estudiante.puesto}</td>
+                                        <td>{estudiante.nombre}</td>
+                                        <td>{estudiante.curso}</td>
+                                        <td>
+                                            <strong>{estudiante.puntos}</strong>
+                                        </td>
+                                    </tr>
+                                ))
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+                <p class="texto-suave">
+                    Los datos deben ser revisados y autorizados por el
+                    establecimiento antes de publicar resultados reales.
+                </p>
+            </div>
+        </div>
+    </section>
+</Layout>

@@ -1,0 +1,39 @@
+---
+import Layout from "../layouts/Layout.astro";
+import TarjetaTaller from "../components/TarjetaTaller.astro";
+---
+
+<Layout title="Programación | Ranking TP">
+    <section class="seccion">
+        <div class="contenedor">
+            <h1 class="titulo-seccion">Áreas de Programación</h1>
+            <p class="texto-suave">
+                Conoce algunas competencias de la especialidad
+                técnico-profesional.
+            </p>
+
+            <div class="rejilla">
+                <TarjetaTaller
+                    nombre="Desarrollo web"
+                    descripcion="Diseño de páginas con HTML y CSS."
+                    imagen="/img/desarrollo-web.svg"
+                />
+                <TarjetaTaller
+                    nombre="Lógica de programación"
+                    descripcion="Análisis de problemas y diseño de algoritmos."
+                    imagen="/img/programacion.svg"
+                />
+                <TarjetaTaller
+                    nombre="Bases de datos"
+                    descripcion="Estructuración y organización de datos."
+                    imagen="/img/bases-datos.svg"
+                />
+                <TarjetaTaller
+                    nombre="Trabajo en equipo"
+                    descripcion="Colaboración y desarrollo de proyectos."
+                    imagen="/img/equipo.svg"
+                />
+            </div>
+        </div>
+    </section>
+</Layout>

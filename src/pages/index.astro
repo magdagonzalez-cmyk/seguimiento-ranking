@@ -1,16 +1,75 @@
 ---
+import Layout from "../layouts/Layout.astro";
+import TarjetaTaller from "../components/TarjetaTaller.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Inicio | Ranking TP">
+    <section class="hero">
+        <div class="contenedor">
+            <span class="etiqueta">3.º y 4.º medio TP</span>
+            <h1>El talento se demuestra programando.</h1>
+            <p>
+                Consulta los resultados académicos y conoce las áreas de
+                aprendizaje de la especialidad de Programación.
+            </p>
+            <a class="boton" href="/ranking">Consultar ranking</a>
+        </div>
+    </section>
+
+    <section class="seccion">
+        <div class="contenedor">
+            <h2 class="titulo-seccion">Bienvenido al Ranking TP</h2>
+            <p class="texto-suave">
+                Un espacio para reconocer el esfuerzo, los proyectos y el
+                aprendizaje de los estudiantes.
+            </p>
+
+            <div class="rejilla">
+                <article class="tarjeta">
+                    <h3>3.º medio TP</h3>
+                    <p>Consulta los resultados de tu curso.</p>
+                    <a href="/ranking">Ver ranking</a>
+                </article>
+
+                <article class="tarjeta">
+                    <h3>4.º medio TP</h3>
+                    <p>Revisa el desempeño académico publicado.</p>
+                    <a href="/ranking">Ver ranking</a>
+                </article>
+
+                <article class="tarjeta">
+                    <h3>Actualización trimestral</h3>
+                    <p>
+                        Consulta el periodo de resultados que publique el
+                        establecimiento.
+                    </p>
+                    <a href="/nosotros">Sobre el proyecto</a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="seccion">
+        <div class="contenedor">
+            <h2 class="titulo-seccion">Áreas de aprendizaje</h2>
+
+            <div class="rejilla">
+                <TarjetaTaller
+                    nombre="Desarrollo web"
+                    descripcion="Creación de sitios web con HTML y CSS."
+                    imagen="/img/desarrollo-web.svg"
+                />
+                <TarjetaTaller
+                    nombre="Programación"
+                    descripcion="Resolución de problemas y pensamiento lógico."
+                    imagen="/img/programacion.svg"
+                />
+                <TarjetaTaller
+                    nombre="Bases de datos"
+                    descripcion="Organización y almacenamiento de información."
+                    imagen="/img/bases-datos.svg"
+                />
+            </div>
+        </div>
+    </section>
+</Layout>
