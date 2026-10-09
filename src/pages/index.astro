@@ -3,73 +3,95 @@ import Layout from "../layouts/Layout.astro";
 import TarjetaTaller from "../components/TarjetaTaller.astro";
 ---
 
-<Layout title="Inicio | Ranking TP">
-    <section class="hero">
-        <div class="contenedor">
-            <span class="etiqueta">3.º y 4.º medio TP</span>
-            <h1>El talento se demuestra programando.</h1>
-            <p>
-                Consulta los resultados académicos y conoce las áreas de
-                aprendizaje de la especialidad de Programación.
-            </p>
-            <a class="boton" href="/ranking">Consultar ranking</a>
-        </div>
-    </section>
+<Layout
+    title="Inicio | Ranking TP"
+    description="Conoce el ranking y las áreas de Programación TP."
+    <section
+    class="hero"
+>
+    <div class="contenedor">
+        <span class="etiqueta">3.º y 4.º medio TP</span>
 
-    <section class="seccion">
-        <div class="contenedor">
-            <h2 class="titulo-seccion">Bienvenido al Ranking TP</h2>
-            <p class="texto-suave">
-                Un espacio para reconocer el esfuerzo, los proyectos y el
-                aprendizaje de los estudiantes.
-            </p>
+        <h1>El talento se demuestra programando.</h1>
 
-            <div class="rejilla">
-                <article class="tarjeta">
-                    <h3>3.º medio TP</h3>
-                    <p>Consulta los resultados de tu curso.</p>
-                    <a href="/ranking">Ver ranking</a>
-                </article>
+        <p>
+            Descubre los proyectos, consulta los resultados publicados y
+            desarrolla tus habilidades tecnológicas.
+        </p>
 
-                <article class="tarjeta">
-                    <h3>4.º medio TP</h3>
-                    <p>Revisa el desempeño académico publicado.</p>
-                    <a href="/ranking">Ver ranking</a>
-                </article>
-
-                <article class="tarjeta">
-                    <h3>Actualización trimestral</h3>
-                    <p>
-                        Consulta el periodo de resultados que publique el
-                        establecimiento.
-                    </p>
-                    <a href="/nosotros">Sobre el proyecto</a>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <section class="seccion">
-        <div class="contenedor">
-            <h2 class="titulo-seccion">Áreas de aprendizaje</h2>
-
-            <div class="rejilla">
-                <TarjetaTaller
-                    nombre="Desarrollo web"
-                    descripcion="Creación de sitios web con HTML y CSS."
-                    imagen="/img/desarrollo-web.svg"
-                />
-                <TarjetaTaller
-                    nombre="Programación"
-                    descripcion="Resolución de problemas y pensamiento lógico."
-                    imagen="/img/programacion.svg"
-                />
-                <TarjetaTaller
-                    nombre="Bases de datos"
-                    descripcion="Organización y almacenamiento de información."
-                    imagen="/img/bases-datos.svg"
-                />
-            </div>
-        </div>
-    </section>
+        <a class="boton" href="/ranking">🏆 Ver ranking →</a>
+    </div>
 </Layout>
+
+<section class="seccion">
+    <div class="contenedor">
+        <h2 class="titulo-seccion">¡Destacados!</h2>
+        <p class="texto-suave">
+            Información importante para nuestra comunidad.
+        </p>
+
+        <div class="rejilla">
+            <article class="tarjeta">
+                <span class="numero">03</span>
+                <h3>3.º medio TP</h3>
+                <p>Revisa el ranking y los resultados de tu curso.</p>
+                <a href="/ranking">Ver resultados →</a>
+            </article>
+
+            <article class="tarjeta">
+                <span class="numero">04</span>
+                <h3>4.º medio TP</h3>
+                <p>Consulta el progreso académico de tu curso.</p>
+                <a href="/ranking">Ver resultados →</a>
+            </article>
+
+            <article class="tarjeta">
+                <span class="numero">📅</span>
+                <h3>Actualización trimestral</h3>
+                <p>Los resultados se publican después de su revisión.</p>
+                <a href="/nosotros">Más información →</a>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="seccion">
+    <div class="contenedor">
+        <h2 class="titulo-seccion">Áreas de aprendizaje</h2>
+        <p class="texto-suave">
+            ¡Explora las habilidades de nuestra especialidad!
+        </p>
+
+        <div class="rejilla">
+            <TarjetaTaller
+                nombre="Desarrollo web"
+                descripcion="Diseño de sitios web con HTML y CSS."
+                imagen="/img/desarrollo-web.png"
+            />
+
+            <TarjetaTaller
+                nombre="Programación"
+                descripcion="Algoritmos, lógica y resolución de problemas."
+                imagen="/img/programacion.png"
+            />
+
+            <TarjetaTaller
+                nombre="Bases de datos"
+                descripcion="Organización y almacenamiento de información."
+                imagen="/img/bases-de-datos.png"
+            />
+
+            <TarjetaTaller
+                nombre="Infraestructura TI"
+                descripcion="Redes, servidores, hardware y sistemas operativos."
+                imagen="/img/infraestructura-ti.png"
+            />
+
+            <TarjetaTaller
+                nombre="Trabajo en equipo"
+                descripcion="Colaboración y desarrollo de proyectos."
+                imagen="/img/trabajo-en-equipo.png"
+            />
+        </div>
+    </div>
+</section>

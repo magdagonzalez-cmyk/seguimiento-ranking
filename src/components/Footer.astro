@@ -1,34 +1,72 @@
 <footer class="pie">
-    <div class="contenedor">
-        <h3>Ranking de Programación TP</h3>
-        <p>Portal para estudiantes de 3.º y 4.º medio técnico-profesional.</p>
-        <p>
-            Los resultados deben ser revisados y autorizados por el
-            establecimiento.
-        </p>
-        <p class="copyright">© 2026 Ranking TP</p>
+    <div class="contenedor pie-interior">
+        <div>
+            <h3><span class="simbolo">&lt;/&gt;</span> Ranking TP</h3>
+            <p>Portal de resultados y aprendizaje en Programación.</p>
+        </div>
+
+        <div class="mensaje">
+            <p>Hoy aprendes, mañana construyes tu futuro.</p>
+        </div>
+
+        <div class="informacion">
+            <strong>3.º y 4.º medio TP</strong>
+            <p>Especialidad de Programación</p>
+            <p>© 2026 Ranking TP</p>
+        </div>
     </div>
 </footer>
 
 <style>
-    .pie {
-        background: #101b35;
-        color: #cbd5e1;
-        padding: 28px 20px;
-        margin-top: 48px;
-        text-align: center;
-    }
-
-    .contenedor {
-        max-width: 1100px;
-        margin: auto;
+    .pie-interior {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 28px;
+        flex-wrap: wrap;
     }
 
     .pie h3 {
+        margin: 0;
         color: white;
+        font-size: 1.4rem;
     }
 
-    .copyright {
-        font-size: 0.85rem;
+    .simbolo {
+        color: #45e4c5;
+        font-family: monospace;
+    }
+
+    .pie p {
+        margin: 7px 0;
+        font-size: 0.9rem;
+    }
+
+    .mensaje {
+        max-width: 220px;
+        color: #9ff5df;
+        font-style: italic;
+        text-align: center;
+    }
+
+    .informacion {
+        padding-left: 24px;
+        border-left: 1px solid #536784;
+    }
+
+    @media (max-width: 650px) {
+        .pie-interior {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .mensaje {
+            text-align: left;
+        }
+
+        .informacion {
+            padding-left: 0;
+            border-left: 0;
+        }
     }
 </style>

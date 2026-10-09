@@ -1,40 +1,62 @@
+
 ---
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Nosotros | Ranking TP">
-    <section class="seccion">
-        <div class="contenedor">
-            <h1 class="titulo-seccion">Sobre el proyecto</h1>
+  <section class="hero">
+    <div class="contenedor">
+      <span class="etiqueta">🚀 Nuestro proyecto</span>
+      <h1>Aprender hoy, innovar mañana.</h1>
+      <p>
+        Una plataforma educativa para apoyar el aprendizaje y reconocer
+        el desarrollo de habilidades tecnológicas.
+      </p>
+    </div>
+  </section>
 
-            <div class="panel">
-                <h2>¿Qué es Ranking TP?</h2>
-                <p>
-                    Es una propuesta de plataforma informativa para organizar y
-                    consultar resultados académicos de estudiantes de 3.º y 4.º
-                    medio de la especialidad de Programación.
-                </p>
+  <section class="seccion">
+    <div class="contenedor">
+      <div class="rejilla">
+        <article class="tarjeta">
+          <span class="numero">🎯</span>
+          <h3>Nuestro objetivo</h3>
+          <p>
+            Facilitar la consulta de resultados y reconocer el progreso
+            de los estudiantes de Programación TP.
+          </p>
+        </article>
 
-                <h2>Objetivo</h2>
-                <p>
-                    Reconocer el aprendizaje, el esfuerzo, el desarrollo de
-                    proyectos y el avance de los estudiantes durante el año
-                    escolar.
-                </p>
+        <article class="tarjeta">
+          <span class="numero">💡</span>
+          <h3>Nuestro enfoque</h3>
+          <p>
+            Fomentar la creatividad, la resolución de problemas y el trabajo
+            en proyectos tecnológicos.
+          </p>
+        </article>
 
-                <h2>Actualización trimestral</h2>
-                <p>
-                    El equipo autorizado del establecimiento debe revisar los
-                    puntajes y publicar los resultados de cada periodo.
-                </p>
+        <article class="tarjeta">
+          <span class="numero">🔒</span>
+          <h3>Responsabilidad</h3>
+          <p>
+            Proteger la información de los estudiantes y publicar solamente
+            datos autorizados.
+          </p>
+        </article>
+      </div>
 
-                <h2>Protección de datos</h2>
-                <p>
-                    La información personal y los resultados reales deben
-                    publicarse solamente con autorización y medidas adecuadas de
-                    privacidad.
-                </p>
-            </div>
-        </div>
-    </section>
+      <div class="panel" style="margin-top: 28px;">
+        <h2>Actualización trimestral</h2>
+        <p>
+          Los resultados deben ser revisados por los responsables del
+          establecimiento antes de cada publicación.
+        </p>
+        <p>
+          Esta versión es demostrativa y no guarda ni actualiza notas reales.
+        </p>
+        <a class="boton" href="/ranking">Consultar ranking →</a>
+      </div>
+    </div>
+  </section>
 </Layout>

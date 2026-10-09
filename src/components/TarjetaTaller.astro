@@ -3,40 +3,10 @@ const { nombre, descripcion, imagen } = Astro.props;
 ---
 
 <article class="tarjeta-taller">
-    <img src={imagen} alt="" loading="lazy" />
+  <img src={imagen} alt={Ilustración de ${nombre}} loading="lazy" />
 
-    <div class="contenido">
-        <h3>{nombre}</h3>
-        <p>{descripcion}</p>
-    </div>
+  <div class="contenido">
+    <h3>{nombre}</h3>
+    <p>{descripcion}</p>
+  </div>
 </article>
-
-<style>
-    .tarjeta-taller {
-        overflow: hidden;
-        background: white;
-        border: 1px solid #e0e7ef;
-        border-radius: 14px;
-    }
-
-    img {
-        display: block;
-        width: 100%;
-        height: 165px;
-        object-fit: cover;
-        background: #d9f7ed;
-    }
-
-    .contenido {
-        padding: 20px;
-    }
-
-    h3 {
-        margin-top: 0;
-        color: #101b35;
-    }
-
-    p {
-        color: #5d687b;
-    }
-</style>

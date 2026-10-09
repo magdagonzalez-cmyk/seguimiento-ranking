@@ -42,46 +42,64 @@ const estudiantes = [
 ---
 
 <Layout title="Ranking | Ranking TP">
+    <section class="hero">
+        <div class="contenedor">
+            <span class="etiqueta">🏆 Resultados académicos</span>
+            <h1>Ranking de Programación</h1>
+            <p>Consulta los puntajes de demostración de 3.º y 4.º medio TP.</p>
+        </div>
+    </section>
+
     <section class="seccion">
         <div class="contenedor">
-            <h1 class="titulo-seccion">Ranking de Programación</h1>
+            <h2 class="titulo-seccion">Tabla de posiciones</h2>
             <p class="texto-suave">
-                Periodo demostrativo. Los puntajes son ficticios.
+                Periodo: demostración. Estos resultados no son oficiales.
             </p>
 
-            <div class="panel">
-                <h2>Resultados por curso</h2>
+            <div class="tabla-contenedor">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Puesto</th>
+                            <th>Estudiante</th>
+                            <th>Curso</th>
+                            <th>Puntaje</th>
+                        </tr>
+                    </thead>
 
-                <div class="tabla-contenedor">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Puesto</th>
-                                <th>Estudiante</th>
-                                <th>Curso</th>
-                                <th>Puntaje</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {
-                                estudiantes.map((estudiante) => (
-                                    <tr>
-                                        <td>{estudiante.puesto}</td>
-                                        <td>{estudiante.nombre}</td>
-                                        <td>{estudiante.curso}</td>
-                                        <td>
-                                            <strong>{estudiante.puntos}</strong>
-                                        </td>
-                                    </tr>
-                                ))
-                            }
-                        </tbody>
-                    </table>
-                </div>
+                    <tbody>
+                        {
+                            estudiantes.map((estudiante) => (
+                                <tr>
+                                    <td>
+                                        {estudiante.puesto === 1
+                                            ? "🥇"
+                                            : estudiante.puesto === 2
+                                              ? "🥈"
+                                              : estudiante.puesto === 3
+                                                ? "🥉"
+                                                : estudiante.puesto}
+                                    </td>
+                                    <td>{estudiante.nombre}</td>
+                                    <td>{estudiante.curso}</td>
+                                    <td>
+                                        <strong>
+                                            {estudiante.puntos} pts.
+                                        </strong>
+                                    </td>
+                                </tr>
+                            ))
+                        }
+                    </tbody>
+                </table>
+            </div>
 
-                <p class="texto-suave">
-                    Los datos deben ser revisados y autorizados por el
-                    establecimiento antes de publicar resultados reales.
+            <div class="panel" style="margin-top: 24px;">
+                <h2>¿Cómo se calcula el ranking?</h2>
+                <p>
+                    El establecimiento debe definir los criterios de evaluación,
+                    la asignación de puntajes y las fechas de publicación.
                 </p>
             </div>
         </div>
