@@ -1,107 +1,221 @@
 ---
 import Layout from "../layouts/Layout.astro";
-
-const estudiantes = [
-    {
-        puesto: 1,
-        nombre: "Estudiante Ejemplo 1",
-        curso: "3.º medio TP",
-        puntos: 950,
-    },
-    {
-        puesto: 2,
-        nombre: "Estudiante Ejemplo 2",
-        curso: "4.º medio TP",
-        puntos: 920,
-    },
-    {
-        puesto: 3,
-        nombre: "Estudiante Ejemplo 3",
-        curso: "3.º medio TP",
-        puntos: 880,
-    },
-    {
-        puesto: 4,
-        nombre: "Estudiante Ejemplo 4",
-        curso: "4.º medio TP",
-        puntos: 860,
-    },
-    {
-        puesto: 5,
-        nombre: "Estudiante Ejemplo 5",
-        curso: "3.º medio TP",
-        puntos: 810,
-    },
-    {
-        puesto: 6,
-        nombre: "Estudiante Ejemplo 6",
-        curso: "4.º medio TP",
-        puntos: 790,
-    },
-];
 ---
 
-<Layout title="Ranking | Ranking TP">
-    <section class="hero">
-        <div class="contenedor">
-            <span class="etiqueta">🏆 Resultados académicos</span>
-            <h1>Ranking de Programación</h1>
-            <p>Consulta los puntajes de demostración de 3.º y 4.º medio TP.</p>
-        </div>
-    </section>
+<Layout
+    title="Ranking | TP Ranking"
+    description="Ranking de estudiantes de 3° y 4° Medio TP."
+>
 
-    <section class="seccion">
-        <div class="contenedor">
-            <h2 class="titulo-seccion">Tabla de posiciones</h2>
-            <p class="texto-suave">
-                Periodo: demostración. Estos resultados no son oficiales.
-            </p>
+    <main class="pagina-ranking">
 
-            <div class="tabla-contenedor">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Puesto</th>
-                            <th>Estudiante</th>
-                            <th>Curso</th>
-                            <th>Puntaje</th>
-                        </tr>
-                    </thead>
+        <!-- ENCABEZADO -->
+        <section class="ranking-hero">
+            <div class="ranking-hero-contenido">
+                <span class="etiqueta-ranking">🏆 RANKING TP</span>
 
-                    <tbody>
-                        {
-                            estudiantes.map((estudiante) => (
-                                <tr>
-                                    <td>
-                                        {estudiante.puesto === 1
-                                            ? "🥇"
-                                            : estudiante.puesto === 2
-                                              ? "🥈"
-                                              : estudiante.puesto === 3
-                                                ? "🥉"
-                                                : estudiante.puesto}
-                                    </td>
-                                    <td>{estudiante.nombre}</td>
-                                    <td>{estudiante.curso}</td>
-                                    <td>
-                                        <strong>
-                                            {estudiante.puntos} pts.
-                                        </strong>
-                                    </td>
-                                </tr>
-                            ))
-                        }
-                    </tbody>
-                </table>
-            </div>
+                <h1>Ranking de estudiantes</h1>
 
-            <div class="panel" style="margin-top: 24px;">
-                <h2>¿Cómo se calcula el ranking?</h2>
                 <p>
-                    El establecimiento debe definir los criterios de evaluación,
-                    la asignación de puntajes y las fechas de publicación.
+                    Consulta la posición de los estudiantes de cada curso.
+                    Solo se muestra el nombre y la posición en el ranking.
                 </p>
             </div>
-        </div>
-    </section>
+        </section>
+
+
+        <!-- RANKINGS -->
+        <section class="rankings">
+
+            <!-- 3° MEDIO TP -->
+            <div class="ranking-curso">
+
+                <div class="titulo-curso">
+                    <div>
+                        <span class="curso-etiqueta">CURSO</span>
+                        <h2>3° Medio TP</h2>
+                    </div>
+
+                    <span class="icono-curso">🎓</span>
+                </div>
+
+
+                <div class="tabla-contenedor">
+
+                    <table class="tabla-ranking">
+
+                        <thead>
+                            <tr>
+                                <th>Posición</th>
+                                <th>Estudiante</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr class="primer-lugar">
+                                <td>
+                                    <span class="medalla">🥇</span>
+                                    <strong>1</strong>
+                                </td>
+                                <td>Juan Pérez</td>
+                            </tr>
+
+                            <tr class="segundo-lugar">
+                                <td>
+                                    <span class="medalla">🥈</span>
+                                    <strong>2</strong>
+                                </td>
+                                <td>María González</td>
+                            </tr>
+
+                            <tr class="tercer-lugar">
+                                <td>
+                                    <span class="medalla">🥉</span>
+                                    <strong>3</strong>
+                                </td>
+                                <td>Pedro Soto</td>
+                            </tr>
+
+                            <tr>
+                                <td><strong>4</strong></td>
+                                <td>Camila Rojas</td>
+                            </tr>
+
+                            <tr>
+                                <td><strong>5</strong></td>
+                                <td>Diego Muñoz</td>
+                            </tr>
+
+                            <tr>
+                                <td><strong>6</strong></td>
+                                <td>Antonia Silva</td>
+                            </tr>
+
+                            <tr>
+                                <td><strong>7</strong></td>
+                                <td>Matías Torres</td>
+                            </tr>
+
+                            <tr>
+                                <td><strong>8</strong></td>
+                                <td>Valentina Díaz</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <!-- 4° MEDIO TP -->
+            <div class="ranking-curso">
+
+                <div class="titulo-curso">
+                    <div>
+                        <span class="curso-etiqueta">CURSO</span>
+                        <h2>4° Medio TP</h2>
+                    </div>
+
+                    <span class="icono-curso">🎓</span>
+                </div>
+
+
+                <div class="tabla-contenedor">
+
+                    <table class="tabla-ranking">
+
+                        <thead>
+                            <tr>
+                                <th>Posición</th>
+                                <th>Estudiante</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr class="primer-lugar">
+                                <td>
+                                    <span class="medalla">🥇</span>
+                                    <strong>1</strong>
+                                </td>
+                                <td>Sofía Pérez</td>
+                            </tr>
+
+                            <tr class="segundo-lugar">
+                                <td>
+                                    <span class="medalla">🥈</span>
+                                    <strong>2</strong>
+                                </td>
+                                <td>Nicolás Torres</td>
+                            </tr>
+
+                            <tr class="tercer-lugar">
+                                <td>
+                                    <span class="medalla">🥉</span>
+                                    <strong>3</strong>
+                                </td>
+                                <td>Valentina Soto</td>
+                            </tr>
+
+                            <tr>
+                                <td><strong>4</strong></td>
+                                <td>Martín Rojas</td>
+                            </tr>
+
+                            <tr>
+                                <td><strong>5</strong></td>
+                                <td>Fernanda Díaz</td>
+                            </tr>
+
+                            <tr>
+                                <td><strong>6</strong></td>
+                                <td>Tomás Silva</td>
+                            </tr>
+
+                            <tr>
+                                <td><strong>7</strong></td>
+                                <td>Javiera Muñoz</td>
+                            </tr>
+
+                            <tr>
+                                <td><strong>8</strong></td>
+                                <td>Benjamín Castro</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- AVISO DE PRIVACIDAD -->
+        <section class="aviso-ranking">
+
+            <div class="aviso-icono">
+                🔒
+            </div>
+
+            <div>
+                <h3>Información protegida</h3>
+
+                <p>
+                    En esta sección solo se muestra el nombre del estudiante
+                    y su posición en el ranking. Las notas, asistencia,
+                    anotaciones y demás información personal son privadas.
+                </p>
+            </div>
+
+        </section>
+
+    </main>
+
 </Layout>

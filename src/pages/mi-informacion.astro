@@ -1,0 +1,1495 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const año = 2026;
+
+const meses = [
+    "Enero",
+    "Febrero",
+    "Marzo",
+    "Abril",
+    "Mayo",
+    "Junio",
+    "Julio",
+    "Agosto",
+    "Septiembre",
+    "Octubre",
+    "Noviembre",
+    "Diciembre"
+];
+
+const diasSemana = [
+    "LUNES",
+    "MARTES",
+    "MIÉRCOLES",
+    "JUEVES",
+    "VIERNES"
+];
+
+/*
+    Feriados nacionales de Chile 2026.
+
+    Los sábados y domingos tampoco aparecen
+    en el calendario de asistencia.
+*/
+const feriados = [
+    "2026-01-01",
+    "2026-04-03",
+    "2026-04-04",
+    "2026-05-01",
+    "2026-05-21",
+    "2026-06-21",
+    "2026-06-29",
+    "2026-07-16",
+    "2026-08-15",
+    "2026-09-18",
+    "2026-09-19",
+    "2026-10-12",
+    "2026-10-31",
+    "2026-11-01",
+    "2026-12-08",
+    "2026-12-25"
+];
+
+/*
+    Ejemplos de asistencia.
+
+    🔴 Ausente
+    🟡 Parcial
+    🟢 Presente
+
+    Puedes cambiar estas fechas por las reales
+    del estudiante.
+*/
+const ausencias = [
+    "2026-03-06",
+    "2026-03-17",
+    "2026-05-08",
+    "2026-08-14",
+    "2026-10-07",
+    "2026-11-06"
+];
+
+const parciales = [
+    "2026-03-04",
+    "2026-03-11",
+    "2026-04-09",
+    "2026-06-04",
+    "2026-08-07",
+    "2026-10-06",
+    "2026-11-04"
+];
+
+function fechaISO(fecha: Date) {
+    const mes = String(fecha.getMonth() + 1).padStart(2, "0");
+    const dia = String(fecha.getDate()).padStart(2, "0");
+
+    return `${fecha.getFullYear()}-${mes}-${dia}`;
+}
+
+function obtenerEstado(fecha: Date) {
+    const fechaTexto = fechaISO(fecha);
+
+    if (ausencias.includes(fechaTexto)) {
+        return "ausente";
+    }
+
+    if (parciales.includes(fechaTexto)) {
+        return "parcial";
+    }
+
+    return "presente";
+}
+
+/*
+    Obtiene los días del mes.
+
+    Solamente:
+    - lunes
+    - martes
+    - miércoles
+    - jueves
+    - viernes
+
+    Se eliminan:
+    - sábados
+    - domingos
+    - feriados
+*/
+function obtenerDiasMes(numeroMes: number) {
+    const dias = [];
+
+    const ultimoDia = new Date(
+        año,
+        numeroMes + 1,
+        0
+    ).getDate();
+
+    for (let dia = 1; dia <= ultimoDia; dia++) {
+        const fecha = new Date(
+            año,
+            numeroMes,
+            dia
+        );
+
+        const diaSemana = fecha.getDay();
+
+        // Domingo y sábado
+        if (diaSemana === 0 || diaSemana === 6) {
+            continue;
+        }
+
+        const fechaTexto = fechaISO(fecha);
+
+        // Feriado
+        if (feriados.includes(fechaTexto)) {
+            continue;
+        }
+
+        dias.push({
+            numero: dia,
+            fecha: fechaTexto,
+            estado: obtenerEstado(fecha),
+            diaSemana: diaSemana
+        });
+    }
+
+    return dias;
+}
+---
+
+<Layout
+    title="Mi información | TP Ranking"
+    description="Información académica y asistencia del estudiante."
+>
+    <main class="mi-informacion">
+
+        <!-- CABECERA -->
+        <section class="perfil-principal">
+
+            <div class="perfil-identidad">
+
+                <div class="avatar-grande">
+                    JP
+                </div>
+
+                <div>
+                    <span class="etiqueta-perfil">
+                        🔐 INFORMACIÓN PRIVADA
+                    </span>
+
+                    <h1>
+                        Juan Pérez
+                    </h1>
+
+                    <p>
+                        3.º Medio TP
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="perfil-decoracion">
+                🏆
+            </div>
+
+        </section>
+
+
+        <!-- RESUMEN -->
+        <section class="resumen">
+
+            <div class="resumen-card ranking-card">
+
+                <span class="resumen-icono">
+                    🏆
+                </span>
+
+                <div>
+                    <span>MI POSICIÓN</span>
+                    <strong>#4</strong>
+                    <small>de 32 estudiantes</small>
+                </div>
+
+            </div>
+
+
+            <div class="resumen-card promedio-card">
+
+                <span class="resumen-icono">
+                    📊
+                </span>
+
+                <div>
+                    <span>MI PROMEDIO</span>
+                    <strong>6,0</strong>
+                    <small>promedio general</small>
+                </div>
+
+            </div>
+
+
+            <div class="resumen-card anotaciones-card">
+
+                <span class="resumen-icono">
+                    📝
+                </span>
+
+                <div>
+                    <span>ANOTACIONES</span>
+                    <strong>1</strong>
+                    <small>registrada</small>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- NOTAS -->
+        <section class="informacion-card">
+
+            <div class="titulo-card">
+
+                <div>
+                    <span>RENDIMIENTO</span>
+                    <h2>Mis notas</h2>
+                </div>
+
+                <span class="titulo-icono">
+                    📚
+                </span>
+
+            </div>
+
+
+            <div class="notas-lista">
+
+                <div class="nota-fila">
+                    <span>Infraestructura TI</span>
+                    <strong>6,1</strong>
+                </div>
+
+                <div class="nota-fila">
+                    <span>Diseño de Base de Datos</span>
+                    <strong>5,8</strong>
+                </div>
+
+                <div class="nota-fila">
+                    <span>Programación y Algoritmos</span>
+                    <strong>6,0</strong>
+                </div>
+
+                <div class="nota-fila">
+                    <span>Desarrollo Web</span>
+                    <strong>6,1</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ANOTACIONES -->
+        <section class="anotacion-destacada">
+
+            <div class="anotacion-icono">
+                📝
+            </div>
+
+            <div>
+
+                <span>MI ANOTACIÓN</span>
+
+                <h2>
+                    Registro académico
+                </h2>
+
+                <p>
+                    Atrasos e inasistencias registrados durante
+                    el período académico.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ASISTENCIA -->
+        <section class="asistencia-seccion">
+
+            <div class="asistencia-titulo">
+
+                <div>
+
+                    <span>ASISTENCIA</span>
+
+                    <h2>
+                        Mi asistencia
+                    </h2>
+
+                    <p>
+                        Consulta tu asistencia durante todo el año.
+                        Los fines de semana y feriados no se contabilizan.
+                    </p>
+
+                </div>
+
+                <div class="año">
+                    {año}
+                </div>
+
+            </div>
+
+
+            <!-- LEYENDA -->
+            <div class="leyenda">
+
+                <div>
+                    <span class="punto verde"></span>
+                    Presente
+                </div>
+
+                <div>
+                    <span class="punto amarillo"></span>
+                    Parcial
+                </div>
+
+                <div>
+                    <span class="punto rojo"></span>
+                    Ausente
+                </div>
+
+            </div>
+
+
+            <!--
+                CONTROLES CSS
+
+                No usamos JavaScript.
+                Cada radio representa un mes.
+            -->
+
+            {
+                meses.map((_, indice) => (
+                    <input
+                        type="radio"
+                        name="mes"
+                        id={`mes-${indice + 1}`}
+                        class="control-mes"
+                        checked={indice === 0}
+                    />
+                ))
+            }
+
+
+            <!-- CALENDARIO -->
+            <div class="calendario">
+
+                <div class="calendario-ventana">
+
+                    <div class="calendario-track">
+
+                        {
+                            meses.map((nombreMes, numeroMes) => {
+
+                                const dias = obtenerDiasMes(numeroMes);
+
+                                return (
+                                    <section class="mes">
+
+                                        <div class="mes-cabecera">
+
+                                            <div>
+
+                                                <span>
+                                                    CALENDARIO DE ASISTENCIA
+                                                </span>
+
+                                                <h3>
+                                                    {nombreMes}
+                                                </h3>
+
+                                            </div>
+
+                                            <strong>
+                                                {año}
+                                            </strong>
+
+                                        </div>
+
+
+                                        <!-- DÍAS DE LA SEMANA -->
+                                        <div class="dias-semana">
+
+                                            {
+                                                diasSemana.map((dia) => (
+                                                    <div>
+                                                        {dia}
+                                                    </div>
+                                                ))
+                                            }
+
+                                        </div>
+
+
+                                        <!-- DÍAS -->
+                                        <div class="dias-grid">
+
+                                            {
+                                                dias.map((dia) => (
+
+                                                    <div
+                                                        class={`dia-asistencia ${dia.estado}`}
+                                                    >
+
+                                                        <strong>
+                                                            {dia.numero}
+                                                        </strong>
+
+                                                        <span class="estado-icono">
+                                                            {
+                                                                dia.estado === "presente"
+                                                                    ? "🟢"
+                                                                    : dia.estado === "parcial"
+                                                                        ? "🟡"
+                                                                        : "🔴"
+                                                            }
+                                                        </span>
+
+                                                        <span class="estado-texto">
+                                                            {
+                                                                dia.estado === "presente"
+                                                                    ? "Presente"
+                                                                    : dia.estado === "parcial"
+                                                                        ? "Parcial"
+                                                                        : "Ausente"
+                                                            }
+                                                        </span>
+
+                                                    </div>
+
+                                                ))
+                                            }
+
+                                        </div>
+
+                                    </section>
+                                );
+
+                            })
+                        }
+
+                    </div>
+
+                </div>
+
+
+                <!-- FLECHAS -->
+                <div class="flechas">
+
+                    {
+                        meses.map((_, indice) => {
+
+                            const anterior =
+                                indice === 0
+                                    ? 12
+                                    : indice;
+
+                            const siguiente =
+                                indice === 11
+                                    ? 1
+                                    : indice + 2;
+
+                            return (
+
+                                <div
+                                    class={`controles-mes controles-mes-${indice + 1}`}
+                                >
+
+                                    <label
+                                        for={`mes-${anterior}`}
+                                        class="flecha flecha-izquierda"
+                                        aria-label="Mes anterior"
+                                    >
+                                        ←
+                                    </label>
+
+
+                                    <span>
+                                        {meses[indice]}
+                                    </span>
+
+
+                                    <label
+                                        for={`mes-${siguiente}`}
+                                        class="flecha flecha-derecha"
+                                        aria-label="Mes siguiente"
+                                    >
+                                        →
+                                    </label>
+
+                                </div>
+
+                            );
+
+                        })
+                    }
+
+                </div>
+
+            </div>
+
+
+            <!-- AVISO -->
+            <div class="aviso-asistencia">
+
+                <span>
+                    💡
+                </span>
+
+                <p>
+
+                    <strong>
+                        ¿Qué significa cada color?
+                    </strong>
+
+                    El color verde indica que estuviste presente en
+                    todas las clases registradas. El amarillo significa
+                    que hubo asistencia parcial o que algún profesor
+                    no registró la lista completa. El rojo indica
+                    ausencia.
+
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+</Layout>
+
+
+<style>
+
+/* =========================================================
+   CONTENEDOR GENERAL
+========================================================= */
+
+.mi-informacion {
+    width: min(1150px, 92%);
+    margin: 0 auto;
+    padding: 45px 0 70px;
+}
+
+
+/* =========================================================
+   PERFIL
+========================================================= */
+
+.perfil-principal {
+    background: linear-gradient(
+        135deg,
+        #27456c,
+        #47748b
+    );
+
+    border-radius: 26px;
+    padding: 30px 35px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    color: white;
+
+    box-shadow: 0 15px 35px rgba(39, 69, 108, 0.18);
+
+    margin-bottom: 25px;
+}
+
+.perfil-identidad {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.avatar-grande {
+    width: 78px;
+    height: 78px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #f7a088;
+
+    color: #27456c;
+
+    font-size: 25px;
+    font-weight: 900;
+
+    border: 5px solid rgba(255,255,255,0.3);
+}
+
+.etiqueta-perfil {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+
+    opacity: 0.85;
+}
+
+.perfil-principal h1 {
+    margin: 6px 0 3px;
+    font-size: 30px;
+}
+
+.perfil-principal p {
+    margin: 0;
+    opacity: 0.85;
+}
+
+.perfil-decoracion {
+    font-size: 55px;
+}
+
+
+/* =========================================================
+   RESUMEN
+========================================================= */
+
+.resumen {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+
+    margin-bottom: 25px;
+}
+
+.resumen-card {
+    padding: 23px;
+
+    border-radius: 20px;
+
+    display: flex;
+    align-items: center;
+    gap: 17px;
+
+    background: white;
+
+    box-shadow: 0 10px 28px rgba(39, 69, 108, 0.10);
+
+    border: 2px solid #99bfd5;
+}
+
+.resumen-icono {
+    width: 52px;
+    height: 52px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 15px;
+
+    background: #eccca6;
+
+    font-size: 25px;
+}
+
+.resumen-card span:not(.resumen-icono) {
+    display: block;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    color: #47748b;
+
+    letter-spacing: 0.8px;
+}
+
+.resumen-card strong {
+    display: block;
+
+    font-size: 27px;
+
+    color: #27456c;
+}
+
+.resumen-card small {
+    color: #777;
+}
+
+
+/* =========================================================
+   TARJETAS
+========================================================= */
+
+.informacion-card {
+    background: white;
+
+    border-radius: 24px;
+
+    padding: 28px;
+
+    margin-bottom: 25px;
+
+    box-shadow: 0 10px 28px rgba(39, 69, 108, 0.10);
+}
+
+.titulo-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 22px;
+}
+
+.titulo-card span:first-child,
+.anotacion-destacada > div:last-child > span,
+.asistencia-titulo span {
+    color: #e95c6c;
+
+    font-size: 12px;
+    font-weight: 900;
+
+    letter-spacing: 1px;
+}
+
+.titulo-card h2,
+.asistencia-titulo h2,
+.anotacion-destacada h2 {
+    margin: 5px 0 0;
+
+    color: #27456c;
+}
+
+.titulo-icono {
+    font-size: 32px;
+}
+
+
+/* =========================================================
+   NOTAS
+========================================================= */
+
+.notas-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.nota-fila {
+    background: #f4f8fa;
+
+    border-radius: 13px;
+
+    padding: 14px 17px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nota-fila span {
+    color: #47748b;
+    font-weight: 600;
+}
+
+.nota-fila strong {
+    background: #99bfd5;
+
+    color: #27456c;
+
+    padding: 7px 13px;
+
+    border-radius: 10px;
+}
+
+
+/* =========================================================
+   ANOTACIÓN
+========================================================= */
+
+.anotacion-destacada {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    padding: 25px;
+
+    border-radius: 22px;
+
+    background: #fff1ec;
+
+    border-left: 7px solid #e95c6c;
+
+    margin-bottom: 30px;
+}
+
+.anotacion-icono {
+    width: 58px;
+    height: 58px;
+
+    border-radius: 16px;
+
+    background: #f7a088;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 28px;
+}
+
+.anotacion-destacada p {
+    margin-bottom: 0;
+
+    color: #666;
+}
+
+
+/* =========================================================
+   ASISTENCIA
+========================================================= */
+
+.asistencia-seccion {
+    background: white;
+
+    border-radius: 26px;
+
+    padding: 30px;
+
+    box-shadow: 0 10px 28px rgba(39, 69, 108, 0.10);
+}
+
+.asistencia-titulo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 20px;
+}
+
+.asistencia-titulo p {
+    color: #6d7880;
+
+    margin-bottom: 0;
+}
+
+.año {
+    background: #27456c;
+
+    color: white;
+
+    padding: 12px 20px;
+
+    border-radius: 13px;
+
+    font-weight: 900;
+}
+
+
+/* =========================================================
+   LEYENDA
+========================================================= */
+
+.leyenda {
+    display: flex;
+    gap: 25px;
+
+    padding: 15px 0 20px;
+
+    flex-wrap: wrap;
+}
+
+.leyenda div {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    font-size: 13px;
+
+    color: #52636d;
+}
+
+.punto {
+    width: 11px;
+    height: 11px;
+
+    border-radius: 50%;
+
+    display: inline-block;
+}
+
+.punto.verde {
+    background: #42b883;
+}
+
+.punto.amarillo {
+    background: #e9b949;
+}
+
+.punto.rojo {
+    background: #e95c6c;
+}
+
+
+/* =========================================================
+   RADIOS
+========================================================= */
+
+.control-mes {
+    position: absolute;
+
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   CALENDARIO
+========================================================= */
+
+.calendario {
+    width: 100%;
+}
+
+.calendario-ventana {
+    width: 100%;
+
+    overflow: hidden;
+
+    border-radius: 22px;
+}
+
+.calendario-track {
+    display: flex;
+
+    width: 1200%;
+
+    transition:
+        transform 0.65s cubic-bezier(0.77, 0, 0.18, 1);
+}
+
+.mes {
+    flex: 0 0 8.333333%;
+
+    width: 8.333333%;
+
+    padding: 22px;
+
+    box-sizing: border-box;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f4f8fa,
+            #ffffff
+        );
+
+    border: 2px solid #99bfd5;
+
+    border-radius: 22px;
+}
+
+
+/* =========================================================
+   CABECERA DEL MES
+========================================================= */
+
+.mes-cabecera {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 20px;
+}
+
+.mes-cabecera span {
+    color: #e95c6c;
+
+    font-size: 10px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+}
+
+.mes-cabecera h3 {
+    margin: 3px 0 0;
+
+    font-size: 27px;
+
+    color: #27456c;
+}
+
+.mes-cabecera strong {
+    background: #eccca6;
+
+    color: #27456c;
+
+    padding: 9px 14px;
+
+    border-radius: 11px;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   DÍAS DE LA SEMANA
+========================================================= */
+
+.dias-semana {
+    display: grid;
+
+    grid-template-columns: repeat(5, 1fr);
+
+    gap: 8px;
+
+    margin-bottom: 8px;
+}
+
+.dias-semana div {
+    text-align: center;
+
+    background: #27456c;
+
+    color: white;
+
+    padding: 10px 5px;
+
+    border-radius: 9px;
+
+    font-size: 10px;
+
+    font-weight: 900;
+}
+
+
+/* =========================================================
+   DÍAS
+========================================================= */
+
+.dias-grid {
+    display: grid;
+
+    grid-template-columns: repeat(5, 1fr);
+
+    gap: 8px;
+}
+
+.dia-asistencia {
+    min-height: 68px;
+
+    padding: 10px;
+
+    border-radius: 12px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    border: 2px solid transparent;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.dia-asistencia:hover {
+    transform: translateY(-3px);
+
+    box-shadow: 0 7px 15px rgba(39, 69, 108, 0.12);
+}
+
+.dia-asistencia strong {
+    font-size: 20px;
+
+    color: #27456c;
+}
+
+.estado-icono {
+    font-size: 14px;
+
+    margin-top: 2px;
+}
+
+.estado-texto {
+    font-size: 9px;
+
+    font-weight: 800;
+
+    margin-top: 2px;
+}
+
+
+/* PRESENTE */
+
+.dia-asistencia.presente {
+    background: #e6f7ef;
+
+    border-color: #8bd7b1;
+}
+
+.dia-asistencia.presente .estado-texto {
+    color: #299363;
+}
+
+
+/* PARCIAL */
+
+.dia-asistencia.parcial {
+    background: #fff6d9;
+
+    border-color: #e9ce6d;
+}
+
+.dia-asistencia.parcial .estado-texto {
+    color: #a57c10;
+}
+
+
+/* AUSENTE */
+
+.dia-asistencia.ausente {
+    background: #ffe7eb;
+
+    border-color: #ef9ca8;
+}
+
+.dia-asistencia.ausente .estado-texto {
+    color: #c54252;
+}
+
+
+/* =========================================================
+   FLECHAS
+========================================================= */
+
+.flechas {
+    margin-top: 18px;
+
+    position: relative;
+
+    min-height: 52px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+.controles-mes {
+    display: none;
+
+    width: 100%;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+.controles-mes span {
+    background: #47748b;
+
+    color: white;
+
+    padding: 9px 20px;
+
+    border-radius: 12px;
+
+    font-size: 13px;
+
+    font-weight: 800;
+}
+
+.flecha {
+    width: 43px;
+    height: 43px;
+
+    border-radius: 50%;
+
+    background: #e95c6c;
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 24px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+.flecha:hover {
+    transform: scale(1.08);
+
+    background: #27456c;
+}
+
+
+/* =========================================================
+   CAMBIO DE MES
+========================================================= */
+
+#mes-1:checked ~ .calendario .calendario-track {
+    transform: translateX(0%);
+}
+
+#mes-2:checked ~ .calendario .calendario-track {
+    transform: translateX(-8.333333%);
+}
+
+#mes-3:checked ~ .calendario .calendario-track {
+    transform: translateX(-16.666666%);
+}
+
+#mes-4:checked ~ .calendario .calendario-track {
+    transform: translateX(-25%);
+}
+
+#mes-5:checked ~ .calendario .calendario-track {
+    transform: translateX(-33.333333%);
+}
+
+#mes-6:checked ~ .calendario .calendario-track {
+    transform: translateX(-41.666666%);
+}
+
+#mes-7:checked ~ .calendario .calendario-track {
+    transform: translateX(-50%);
+}
+
+#mes-8:checked ~ .calendario .calendario-track {
+    transform: translateX(-58.333333%);
+}
+
+#mes-9:checked ~ .calendario .calendario-track {
+    transform: translateX(-66.666666%);
+}
+
+#mes-10:checked ~ .calendario .calendario-track {
+    transform: translateX(-75%);
+}
+
+#mes-11:checked ~ .calendario .calendario-track {
+    transform: translateX(-83.333333%);
+}
+
+#mes-12:checked ~ .calendario .calendario-track {
+    transform: translateX(-91.666666%);
+}
+
+
+/* =========================================================
+   MOSTRAR LAS FLECHAS DEL MES ACTUAL
+========================================================= */
+
+#mes-1:checked ~ .calendario .controles-mes-1,
+#mes-2:checked ~ .calendario .controles-mes-2,
+#mes-3:checked ~ .calendario .controles-mes-3,
+#mes-4:checked ~ .calendario .controles-mes-4,
+#mes-5:checked ~ .calendario .controles-mes-5,
+#mes-6:checked ~ .calendario .controles-mes-6,
+#mes-7:checked ~ .calendario .controles-mes-7,
+#mes-8:checked ~ .calendario .controles-mes-8,
+#mes-9:checked ~ .calendario .controles-mes-9,
+#mes-10:checked ~ .calendario .controles-mes-10,
+#mes-11:checked ~ .calendario .controles-mes-11,
+#mes-12:checked ~ .calendario .controles-mes-12 {
+    display: flex;
+}
+
+
+/* =========================================================
+   AVISO
+========================================================= */
+
+.aviso-asistencia {
+    margin-top: 20px;
+
+    padding: 18px 20px;
+
+    background: #fff7ea;
+
+    border: 2px solid #eccca6;
+
+    border-radius: 16px;
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 12px;
+}
+
+.aviso-asistencia > span {
+    font-size: 22px;
+}
+
+.aviso-asistencia p {
+    margin: 0;
+
+    color: #657078;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+}
+
+.aviso-asistencia strong {
+    display: block;
+
+    color: #27456c;
+
+    margin-bottom: 3px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 800px) {
+
+    .resumen {
+        grid-template-columns: 1fr;
+    }
+
+    .perfil-principal {
+        padding: 25px;
+    }
+
+    .perfil-decoracion {
+        display: none;
+    }
+
+    .asistencia-seccion {
+        padding: 20px;
+    }
+
+    .mes {
+        padding: 15px;
+    }
+
+    .dias-semana,
+    .dias-grid {
+        gap: 5px;
+    }
+
+    .dias-semana div {
+        font-size: 8px;
+
+        padding: 8px 2px;
+    }
+
+    .dia-asistencia {
+        min-height: 57px;
+
+        padding: 6px;
+    }
+
+    .dia-asistencia strong {
+        font-size: 16px;
+    }
+
+    .estado-texto {
+        font-size: 7px;
+    }
+
+}
+
+
+@media (max-width: 520px) {
+
+    .mi-informacion {
+        width: 94%;
+
+        padding-top: 25px;
+    }
+
+    .perfil-principal {
+        border-radius: 20px;
+    }
+
+    .avatar-grande {
+        width: 60px;
+        height: 60px;
+
+        font-size: 20px;
+    }
+
+    .perfil-principal h1 {
+        font-size: 23px;
+    }
+
+    .asistencia-titulo {
+        align-items: flex-start;
+    }
+
+    .año {
+        padding: 9px 12px;
+
+        font-size: 12px;
+    }
+
+    .mes-cabecera h3 {
+        font-size: 22px;
+    }
+
+    .mes-cabecera strong {
+        font-size: 12px;
+    }
+
+    .dias-grid {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+
+    .dia-asistencia {
+        min-height: 52px;
+
+        padding: 4px;
+    }
+
+    .estado-icono {
+        font-size: 11px;
+    }
+
+    .estado-texto {
+        display: none;
+    }
+
+    .flecha {
+        width: 38px;
+        height: 38px;
+
+        font-size: 20px;
+    }
+
+}
+
+</style>

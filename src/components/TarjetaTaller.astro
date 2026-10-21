@@ -1,12 +1,27 @@
 ---
-const { nombre, descripcion, imagen } = Astro.props;
+const {
+    nombre,
+    descripcion,
+    icono = "📚"
+} = Astro.props;
 ---
 
 <article class="tarjeta-taller">
-  <img src={imagen} alt={Ilustración de ${nombre}} loading="lazy" />
 
-  <div class="contenido">
-    <h3>{nombre}</h3>
-    <p>{descripcion}</p>
-  </div>
+    <div class="icono-taller">
+        {icono}
+    </div>
+
+    <div>
+
+        <h3>
+            {nombre}
+        </h3>
+
+        <p>
+            {descripcion}
+        </p>
+
+    </div>
+
 </article>

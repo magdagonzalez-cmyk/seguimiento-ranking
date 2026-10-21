@@ -1,72 +1,68 @@
-<footer class="pie">
-    <div class="contenedor pie-interior">
+<footer class="footer">
+
+    <div class="contenedor footer-contenido">
+
         <div>
-            <h3><span class="simbolo">&lt;/&gt;</span> Ranking TP</h3>
-            <p>Portal de resultados y aprendizaje en Programación.</p>
+
+            <a href="/" class="logo footer-logo">
+                <span>TP</span>
+                Ranking
+            </a>
+
+            <p>
+                Sistema de seguimiento académico
+                para estudiantes de enseñanza media TP.
+            </p>
+
         </div>
 
-        <div class="mensaje">
-            <p>Hoy aprendes, mañana construyes tu futuro.</p>
+
+        <div class="footer-enlaces">
+
+            <strong>
+                Navegación
+            </strong>
+
+            <a href="/">
+                Inicio
+            </a>
+
+            <a href="/ranking">
+                Ranking
+            </a>
+
+            <a href="/talleres">
+                Asignaturas
+            </a>
+
         </div>
 
-        <div class="informacion">
-            <strong>3.º y 4.º medio TP</strong>
-            <p>Especialidad de Programación</p>
-            <p>© 2026 Ranking TP</p>
+
+        <div class="footer-enlaces">
+
+            <strong>
+                Cursos
+            </strong>
+
+            <span>
+                3.º Medio TP
+            </span>
+
+            <span>
+                4.º Medio TP
+            </span>
+
         </div>
+
     </div>
+
+
+    <div class="footer-final">
+
+        <p>
+            © 2026 Ranking TP · Proyecto académico
+        </p>
+
+    </div>
+
 </footer>
-
-<style>
-    .pie-interior {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 28px;
-        flex-wrap: wrap;
-    }
-
-    .pie h3 {
-        margin: 0;
-        color: white;
-        font-size: 1.4rem;
-    }
-
-    .simbolo {
-        color: #45e4c5;
-        font-family: monospace;
-    }
-
-    .pie p {
-        margin: 7px 0;
-        font-size: 0.9rem;
-    }
-
-    .mensaje {
-        max-width: 220px;
-        color: #9ff5df;
-        font-style: italic;
-        text-align: center;
-    }
-
-    .informacion {
-        padding-left: 24px;
-        border-left: 1px solid #536784;
-    }
-
-    @media (max-width: 650px) {
-        .pie-interior {
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        .mensaje {
-            text-align: left;
-        }
-
-        .informacion {
-            padding-left: 0;
-            border-left: 0;
-        }
-    }
-</style>
