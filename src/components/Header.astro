@@ -1,16 +1,27 @@
+---
+interface Props {
+    usuario?: {
+        rut: string;
+        nombre: string;
+        curso: string;
+    };
+}
+
+const { usuario } = Astro.props;
+---
+
 <header class="header">
+    <div class="header-contenido">
 
-    <div class="contenedor header-contenido">
-
-        <a href="/" class="logo">
-            <span>TP</span>
-            Ranking
+        <!-- LOGO -->
+        <a href="/rankingtp" class="logo">
+            TPRanking
         </a>
 
-
+        <!-- NAVEGACIÓN -->
         <nav class="navegacion">
 
-            <a href="/">
+            <a href="/rankingtp">
                 Inicio
             </a>
 
@@ -18,7 +29,7 @@
                 Ranking
             </a>
 
-            <a href="/talleres">
+            <a href="/asignaturas">
                 Asignaturas
             </a>
 
@@ -26,13 +37,52 @@
                 Nosotros
             </a>
 
-            <a href="/mi-informacion">
+            <!-- MI INFORMACIÓN -->
+            <a
+                href="/mi-informacion"
+                class="boton-mi-informacion"
+            >
                 🔒 Mi información
             </a>
 
+            <!-- USUARIO CONECTADO -->
+            {usuario && (
+                <div class="usuario-conectado">
+
+                    <span class="usuario-icono">
+                        👤
+                    </span>
+
+                    <div class="usuario-datos">
+
+                        <strong>
+                            {usuario.nombre}
+                        </strong>
+
+                        <small>
+                            {usuario.curso}
+                        </small>
+
+                    </div>
+
+                </div>
+            )}
+
+            <!-- CERRAR SESIÓN -->
+            <form
+                action="/api/logout"
+                method="POST"
+                class="form-cerrar-sesion"
+            >
+                <button
+                    type="submit"
+                    class="boton-cerrar-sesion"
+                >
+                    ↪ Cerrar sesión
+                </button>
+            </form>
 
         </nav>
 
     </div>
-
 </header>

@@ -1,6 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
+const usuario = Astro.locals.usuario;
+
 const año = 2026;
 
 const meses = [
@@ -179,11 +181,11 @@ function obtenerDiasMes(numeroMes: number) {
                     </span>
 
                     <h1>
-                        Juan Pérez
+                        {usuario?.nombre}
                     </h1>
 
                     <p>
-                        3.º Medio TP
+                        {usuario?.curso}
                     </p>
                 </div>
 

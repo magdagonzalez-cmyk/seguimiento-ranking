@@ -1,306 +1,154 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import TarjetaTaller from "../components/TarjetaTaller.astro";
 ---
 
 <Layout
-    title="Inicio | Ranking TP"
-    description="Conoce el ranking y el progreso académico de los estudiantes TP."
+    title="Iniciar sesión | TP Ranking"
+    description="Acceso al sistema TP Ranking."
 >
 
+    <main class="login-pagina">
 
-    <!-- HERO -->
+        <section class="login-contenedor">
 
-    <section class="hero">
+            <!-- PRESENTACIÓN -->
 
-        <div class="contenedor hero-contenido">
+            <div class="login-presentacion">
 
-            <span class="etiqueta">
-                3.º y 4.º medio TP
-            </span>
+                <div class="login-logo">
+                    🏆
+                </div>
 
-
-            <h1>
-                Tu esfuerzo también tiene un lugar.
-            </h1>
-
-
-            <p>
-                Consulta tu posición en el ranking, revisa tus
-                calificaciones y conoce tu progreso académico
-                en las distintas áreas de la especialidad.
-            </p>
-
-
-            <div class="hero-botones">
-
-                <a
-                    class="boton"
-                    href="/ranking"
-                >
-                    🏆 Ver mi ranking →
-                </a>
-
-
-                <a
-                    class="boton boton-secundario"
-                    href="/talleres"
-                >
-                    📚 Ver asignaturas
-                </a>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- OPCIONES -->
-
-    <section class="seccion">
-
-        <div class="contenedor">
-
-            <h2 class="titulo-seccion">
-                ¿Qué quieres consultar?
-            </h2>
-
-            <p class="texto-suave">
-                Accede rápidamente a la información relacionada
-                con tu progreso académico.
-            </p>
-
-
-            <div class="rejilla">
-
-                <article class="tarjeta">
-
-                    <span class="numero">
-                        🏆
-                    </span>
-
-                    <h3>
-                        Mi ranking
-                    </h3>
-
-                    <p>
-                        Revisa en qué posición te encuentras
-                        dentro de tu curso.
-                    </p>
-
-                    <a href="/ranking">
-                        Ver ranking →
-                    </a>
-
-                </article>
-
-
-                <article class="tarjeta">
-
-                    <span class="numero">
-                        📊
-                    </span>
-
-                    <h3>
-                        Mis notas
-                    </h3>
-
-                    <p>
-                        Consulta tus calificaciones en cada
-                        una de tus asignaturas técnicas.
-                    </p>
-
-                    <a href="/ranking">
-                        Ver mis notas →
-                    </a>
-
-                </article>
-
-
-                <article class="tarjeta">
-
-                    <span class="numero">
-                        📝
-                    </span>
-
-                    <h3>
-                        Mis anotaciones
-                    </h3>
-
-                    <p>
-                        Consulta las anotaciones registradas
-                        en tu información académica.
-                    </p>
-
-                    <a href="/ranking">
-                        Ver anotaciones →
-                    </a>
-
-                </article>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- CURSOS -->
-
-    <section class="seccion seccion-gris">
-
-        <div class="contenedor">
-
-            <h2 class="titulo-seccion">
-                Cursos participantes
-            </h2>
-
-            <p class="texto-suave">
-                El ranking se encuentra separado entre
-                3.º y 4.º medio TP.
-            </p>
-
-
-            <div class="rejilla">
-
-                <article class="tarjeta curso">
-
-                    <span class="numero">
-                        03
-                    </span>
-
-                    <h3>
-                        3.º medio TP
-                    </h3>
-
-                    <p>
-                        Consulta el ranking correspondiente
-                        a los estudiantes de 3.º medio TP.
-                    </p>
-
-                    <a href="/ranking#tercero">
-                        Ver ranking de 3.º →
-                    </a>
-
-                </article>
-
-
-                <article class="tarjeta curso">
-
-                    <span class="numero">
-                        04
-                    </span>
-
-                    <h3>
-                        4.º medio TP
-                    </h3>
-
-                    <p>
-                        Consulta el ranking correspondiente
-                        a los estudiantes de 4.º medio TP.
-                    </p>
-
-                    <a href="/ranking#cuarto">
-                        Ver ranking de 4.º →
-                    </a>
-
-                </article>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- ASIGNATURAS -->
-
-    <section class="seccion">
-
-        <div class="contenedor">
-
-            <h2 class="titulo-seccion">
-                Áreas de aprendizaje
-            </h2>
-
-            <p class="texto-suave">
-                Conoce las asignaturas consideradas dentro
-                de la especialidad técnica.
-            </p>
-
-
-            <div class="rejilla">
-
-                <TarjetaTaller
-                    nombre="Desarrollo Web"
-                    descripcion="Diseño y desarrollo de sitios web utilizando HTML, CSS y tecnologías web."
-                    icono="🌐"
-                />
-
-
-                <TarjetaTaller
-                    nombre="Programación y Algoritmos"
-                    descripcion="Lógica, algoritmos y resolución de problemas mediante programación."
-                    icono="💻"
-                />
-
-
-                <TarjetaTaller
-                    nombre="Diseño de Base de Datos"
-                    descripcion="Diseño, organización y almacenamiento de información."
-                    icono="🗄️"
-                />
-
-
-                <TarjetaTaller
-                    nombre="Infraestructura TI"
-                    descripcion="Redes, hardware, servidores y sistemas operativos."
-                    icono="🖥️"
-                />
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- PRIVACIDAD -->
-
-    <section class="seccion">
-
-        <div class="contenedor">
-
-            <div class="aviso">
-
-                <span class="aviso-icono">
-                    🔒
+                <span class="login-etiqueta">
+                    TP RANKING
                 </span>
 
-                <div>
+                <h1>
+                    Bienvenido
+                </h1>
+
+                <p>
+                    Ingresa con tus datos de estudiante para acceder
+                    a tu información académica y al ranking.
+                </p>
+
+                <div class="login-info">
+
+                    <div>
+                        🔒
+                        <span>
+                            Acceso protegido
+                        </span>
+                    </div>
+
+                    <div>
+                        👨‍🎓
+                        <span>
+                            Información del estudiante
+                        </span>
+                    </div>
+
+                    <div>
+                        🏆
+                        <span>
+                            Ranking TP
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- LOGIN -->
+
+            <div class="login-formulario">
+
+                <div class="login-titulo">
+
+                    <span>
+                        ACCESO ESTUDIANTE
+                    </span>
 
                     <h2>
-                        Tu información es personal
+                        Iniciar sesión
                     </h2>
 
                     <p>
-                        Las calificaciones, anotaciones y posición
-                        de cada estudiante deben ser consultadas
-                        de manera individual.
+                        Ingresa tu RUT y contraseña para continuar.
+                    </p>
+
+                </div>
+
+
+                <form
+                    action="/api/login"
+                    method="POST"
+                    class="form-login"
+                >
+
+                    <div class="campo-login">
+
+                        <label for="rut">
+                            RUT
+                        </label>
+
+                        <input
+                            type="text"
+                            id="rut"
+                            name="rut"
+                            placeholder="Ej: 12.345.678-9"
+                            autocomplete="username"
+                            required
+                        />
+
+                    </div>
+
+
+                    <div class="campo-login">
+
+                        <label for="password">
+                            Contraseña
+                        </label>
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Ingresa tu contraseña"
+                            autocomplete="current-password"
+                            required
+                        />
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="boton-login"
+                    >
+                        Iniciar sesión
+                        <span>→</span>
+                    </button>
+
+                </form>
+
+
+                <div class="login-aviso">
+
+                    <span>🔐</span>
+
+                    <p>
+                        Tus credenciales son personales.
+                        No compartas tu contraseña con otras personas.
                     </p>
 
                 </div>
 
             </div>
 
-        </div>
+        </section>
 
-    </section>
-
+    </main>
 
 </Layout>
